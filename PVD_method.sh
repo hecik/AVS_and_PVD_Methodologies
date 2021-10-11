@@ -1,9 +1,10 @@
 #!/bin/bash
 
-
 if [ $# -eq 0 ]
 then
     echo "
+    If conduct PVD Result Analysis;
+    
     Usage	: $0 <CPE List File Path> <Software Version> <AS_TP Result Path>
     Example	: $0 ./software_cpe_list 1.1.2 ./AS_TP_Result
 
@@ -62,9 +63,6 @@ do
 
         fi
     }
-
-
-
     sed '1,2d' ./passive_scan_result | while IFS="" read -r cve_line
     do
 
@@ -76,9 +74,6 @@ do
 
         if [ -z  $version_start_excluding ]; then version_start_excluding=0;fi
         if [ -z  $version_start_including ]; then version_start_including=0;fi
-        #	if [ -z  $version_end_excluding ]; then version_end_excluding=0;fi
-        #	if [ -z  $version_end_including ]; then version_end_including=0;fi
-
 
         echo "Software CVE ID		:" $cve_id
         echo "Version Start Excluding	:" $version_start_excluding
@@ -103,12 +98,10 @@ do
                     version_gt $version_end_including $exact_software_version
                     version_eq $version_end_including $exact_software_version
 
-
                     if [ "$result_gt" = "bigger" ] || [ "$result_eq" = "equal" ];then
                         result_gt=''
                         result_eq=''
                         echo $cve_id >>software_PS_cve_result_temp
-
                     fi
                     if [ -z $version_end_including ];then
 
@@ -129,8 +122,6 @@ do
         result_lt=''
         result_eq=''
     done
-
-
 done < "$1"
 direct=results/$software_name
 mkdir -p $direct
@@ -140,7 +131,7 @@ rm -rf software_PS_cve_result_temp passive_scan_result
 if [ -z $3  ]
 then
     echo "
-    If conduct PS algorithm;
+    If conduct PVD algorithm;
     Please insert  3.rd parameter AS_TP Results File Directory Path
 
     Usage	: $0 <CPE List File Path> <Software Version> <AS_TP Result Path>
@@ -151,5 +142,4 @@ else
 	comm -23 <(sort -u $3) ./$direct/${software_name}_PS_cve_result >./$direct/${software_name}_PS_State3_FS1
 	comm -13 <(sort -u $3) ./$direct/${software_name}_PS_cve_result >./$direct/${software_name}_PS_State4
 	comm -12 <(sort -u $3) ./$direct/${software_name}_PS_cve_result >./$direct/${software_name}_PS_State5_FS2
-
 fi
