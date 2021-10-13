@@ -9,8 +9,8 @@ Usage:
 
  If conduct PVD Result Analysis;
     
-    Usage	: $0 <CPE List File Path> <Software Version> <AS_TP Result Path>
-    Example	: $0 ./software_cpe_list 1.1.2 ./AS_TP_Result
+    Usage	: $0 <CPE List File Path> <Software Version> <AVS_TP Results File Path>
+    Example	: $0 ./software_cpe_list 1.1.2 ./AVS_TP_Results
 
     If only search CVEs from local copy of NVD then use;
 
