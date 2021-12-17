@@ -16,4 +16,7 @@ Usage:
 
     Example	: $0 ./software_cpe_list 1.1.2"
     
+Link for download CPE and CVE databases:
+https://bit.ly/3F9P6jz
+    
 [1] https://github.com/vulsio/go-cve-dictionary.git
