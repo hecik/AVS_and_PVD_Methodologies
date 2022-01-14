@@ -1,1 +1,1 @@
-All vulnerability scan results.
+Active Vulnerability Scan Results.
